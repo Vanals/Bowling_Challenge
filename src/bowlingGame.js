@@ -15,3 +15,7 @@ BowlingGame.prototype.rollAndSave = function (score) {
 BowlingGame.prototype.pushNewFrame = function () {
   this.frames.push(new this.bowlingframe())
 };
+
+BowlingGame.prototype.increaseTurn = function () {
+  this.turn += 1
+};
