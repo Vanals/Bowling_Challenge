@@ -34,5 +34,9 @@ BowlingGame.prototype._actualTurn = function () {
 };
 
 BowlingGame.prototype._previousFrame = function () {
-  return this.frames[this.actualTurn() - 1]
+  return this.frames[this._actualTurn() - 1]
+};
+
+BowlingGame.prototype._isSpare = function () {
+  return this._previousFrame().scores.reduce((a, b) => a + b) === 10 && this._previousFrame().scores[0] != 10
 };
