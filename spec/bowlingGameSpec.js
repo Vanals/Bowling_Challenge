@@ -37,4 +37,13 @@ describe('BowlingGame', function() {
     });
   });
 
+  describe('isSpare', function() {
+    it('Return true if in the previous frame you did spare ', function () {
+      bowlinggame.rollAndSave(5)
+      bowlinggame.rollAndSave(5)
+      expect(bowlinggame.isSpare()).toEqual(true)
+    });
+  });
+
+
 });

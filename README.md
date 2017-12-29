@@ -22,3 +22,9 @@ As bowling Player
 So I can see how good I am
 I want to get my final score
 ```
+
+```
+As bowling Player
+So i can get bonus scores
+I want to get spare bonuses
+```
