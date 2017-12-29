@@ -1,21 +1,27 @@
 function BowlingGame(bowlingball = BowlingBall, bowlingframe = BowlingFrame) {
   this.bowlingball = new bowlingball();
   this.bowlingframe = bowlingframe
-  this.frames = []
-  this.turn = 0 // need a increase turn method
+  this.frames = [new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), ]
+  this.turn = 0
 }
 
 BowlingGame.prototype.rollAndSave = function (score) {
-  this.pushNewFrame() // shouldn't be here, but in another big method wich will contian rollandsave
   this.frames[this.turn].saveScore(this.bowlingball.roll(score))
-  this.turn += 1 // make a method for that
-
+  this.increaseTurn()
 };
 
-BowlingGame.prototype.pushNewFrame = function () {
-  this.frames.push(new this.bowlingframe())
-};
+// BowlingGame.prototype.pushNewFrame = function () {
+//   if (previousFrame().score.length === 2) this.frames.push(new this.bowlingframe())
+// };
 
 BowlingGame.prototype.increaseTurn = function () {
-  this.turn += 1
+  if (this.frames[this._actualTurn()].scores.length === 2) this.turn += 1
+};
+
+BowlingGame.prototype._actualTurn = function () {
+  return this.turn
+};
+
+BowlingGame.prototype._previousFrame = function () {
+  return this.frames[this.actualTurn() - 1]
 };
