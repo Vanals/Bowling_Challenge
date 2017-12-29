@@ -16,3 +16,9 @@ As bowling Player
 So the game can be more similar to the real one
 I want to save the scores in the correct frame
 ```
+
+```
+As bowling Player
+So I can see how good I am
+I want to get my final score
+```

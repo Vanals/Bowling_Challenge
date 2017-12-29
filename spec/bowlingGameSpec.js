@@ -20,4 +20,21 @@ describe('BowlingGame', function() {
     });
   });
 
+  describe('getFinalScore', function() {
+    it('Get the scores from all the frames and calculate the sum', function () {
+      bowlinggame.rollAndSave(8)
+      bowlinggame.rollAndSave(8)
+      bowlinggame.rollAndSave(1)
+      bowlinggame.rollAndSave(2)
+      expect(bowlinggame.getFinalScore()).toEqual(19)
+    });
+  });
+
+  describe('isGutter', function() {
+    it('Add 20 points if your totalscore array is equal to 0', function () {
+      bowlinggame.isGutter()
+      expect(bowlinggame.getFinalScore()).toEqual(20)
+    });
+  });
+
 });

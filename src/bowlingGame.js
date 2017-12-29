@@ -3,6 +3,7 @@ function BowlingGame(bowlingball = BowlingBall, bowlingframe = BowlingFrame) {
   this.bowlingframe = bowlingframe
   this.frames = [new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), new this.bowlingframe(), ]
   this.turn = 0
+  this.totalscore = [0]
 }
 
 BowlingGame.prototype.rollAndSave = function (score) {
@@ -16,6 +17,16 @@ BowlingGame.prototype.rollAndSave = function (score) {
 
 BowlingGame.prototype.increaseTurn = function () {
   if (this.frames[this._actualTurn()].scores.length === 2) this.turn += 1
+};
+
+BowlingGame.prototype.getFinalScore = function () {
+  this.frames.map(frame => frame.scores.map(score => this.totalscore.push(score)));
+  if (this.isGutter()) this.totalscore.push(20)
+  return this.totalscore.reduce((a, b) => a + b)
+};
+
+BowlingGame.prototype.isGutter = function () {
+  return this.totalscore.reduce((a, b) => a + b) === 0
 };
 
 BowlingGame.prototype._actualTurn = function () {
