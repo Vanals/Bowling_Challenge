@@ -9,5 +9,5 @@
     this.scores.push(score)
   };
 
-exports.BowlingFrame = BowlingFrame;
+exports.BowlingFrame = BowlingFrame
 })(this);
