@@ -11,4 +11,11 @@ describe('BowlingGame', function() {
     });
   });
 
+  describe('increaseTurn', function() {
+    it('Increase the turn variable by 1', function () {
+      bowlinggame.increaseTurn()
+      expect(bowlinggame.turn).toEqual(1)
+    });
+  });
+
 });
