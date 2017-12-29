@@ -5,7 +5,7 @@ describe('BowlingFrame', function() {
   });
 
   describe('saveScore', function() {
-    it('Rakes a score and save it in the scores array', function () {
+    it('Takes a score and save it in the scores array', function () {
       bowlingframe.saveScore(10)
       expect(bowlingframe.scores[0]).toEqual(10)
     });
