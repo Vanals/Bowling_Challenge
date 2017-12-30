@@ -71,8 +71,18 @@ describe('BowlingGame', function() {
     });
   });
 
-  describe('Typical game', function() {
-    it('Create a complete bowling game session with spares and strikes, and get the final score', function() {
+  describe('strikeBonus2', function() {
+    it('Add the bonus strike when you do 2 or more strike ina row', function () {
+      bowlinggame.runTurn(10)
+      bowlinggame.runTurn(10)
+      bowlinggame.runTurn(6)
+      bowlinggame.runTurn(2)
+      expect(bowlinggame.frames[0].scores.reduce((a, b) => a + b)).toEqual(26)
+    });
+  });
+
+  describe('Bowling Session', function() {
+    it('Mime bowling game session with spares and strikes, and get the final score', function() {
       bowlinggame.runTurn(10)
       bowlinggame.runTurn(5)
       bowlinggame.runTurn(2)
@@ -82,8 +92,21 @@ describe('BowlingGame', function() {
       bowlinggame.runTurn(2)
       bowlinggame.runTurn(1)
       bowlinggame.runTurn(10)
-      bowlinggame.runTurn(10) //double strike to fix
-      expect(bowlinggame.getFinalScore()).toEqual(90)
+      bowlinggame.runTurn(10)
+      bowlinggame.runTurn(1)
+      expect(bowlinggame.getFinalScore()).toEqual(92)
     });
+
+    it('Mime bowling game session with 3 strikes ina row', function() {
+      bowlinggame.runTurn(10)
+      bowlinggame.runTurn(10)
+      bowlinggame.runTurn(10)
+      bowlinggame.runTurn(3)
+      bowlinggame.runTurn(4)
+      bowlinggame.runTurn(2)
+      bowlinggame.runTurn(1)
+      expect(bowlinggame.getFinalScore()).toEqual(80)
+    });
+
   });
 });
