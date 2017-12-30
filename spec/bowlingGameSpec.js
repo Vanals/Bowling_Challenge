@@ -11,6 +11,12 @@ describe('BowlingGame', function() {
       bowlinggame.increaseTurn()
       expect(bowlinggame.turn).toEqual(1)
     });
+
+    it('Increase turn by 1 if in the first roll you did Strike', function () {
+      bowlinggame.runTurn(10)
+      expect(bowlinggame._actualTurn()).toEqual(1)
+    });
+
   });
 
   describe('getFinalScore', function() {
@@ -49,17 +55,19 @@ describe('BowlingGame', function() {
     });
   });
 
-  describe('increaseTurn', function() {
-    it('Increase turn by 1 if in the first roll you did Strike', function () {
+  describe('wasStrike', function() {
+    it('Return true if in the previous frame you did Strike!', function () {
       bowlinggame.runTurn(10)
-      expect(bowlinggame._actualTurn()).toEqual(1)
+      expect(bowlinggame._wasStrike()).toEqual(true)
     });
   });
 
-  describe('wasStrike', function() {
-    it('Return true if in the previous frame you did Strike!', function () {
-      bowlinggame.runTurn(10) // After this i should go automatically to the next frame, so next turn
-      expect(bowlinggame._wasStrike()).toEqual(true)
+  describe('strikeBonus', function() {
+    it('Add to the Strike score the next 2 rolls', function () {
+      bowlinggame.runTurn(10)
+      bowlinggame.runTurn(5)
+      bowlinggame.runTurn(3)
+      expect(bowlinggame.frames[0].scores.reduce((a, b) => a + b)).toEqual(18)
     });
   });
 });

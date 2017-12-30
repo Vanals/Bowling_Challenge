@@ -14,7 +14,6 @@ BowlingGame.prototype.runTurn = function (score) {
 
 BowlingGame.prototype.rollAndSave = function (score) {
   this.frames[this.turn].saveScore(this.bowlingball.roll(score))
-  // this.increaseTurn()
 };
 
 BowlingGame.prototype.spareBonus = function () {
