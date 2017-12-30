@@ -36,18 +36,18 @@ describe('BowlingGame', function() {
     });
   });
 
-  describe('isSpare', function() {
+  describe('wasSpare', function() {
     it('Return true if in the previous frame you did spare ', function () {
       bowlinggame.rollAndSave(5)
       bowlinggame.increaseTurn()
       bowlinggame.rollAndSave(5)
       bowlinggame.increaseTurn()
-      expect(bowlinggame._isSpare()).toEqual(true)
+      expect(bowlinggame._wasSpare()).toEqual(true)
     });
   });
 
   describe('spareBonus', function() {
-    it('Add the score you just did in the previous frame if isSpare returns true', function () {
+    it('Add the score you just did in the previous frame if wasSpare returns true', function () {
       bowlinggame.runTurn(4)
       bowlinggame.runTurn(6)
       bowlinggame.runTurn(8)

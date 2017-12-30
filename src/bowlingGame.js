@@ -18,7 +18,7 @@ BowlingGame.prototype.rollAndSave = function (score) {
 };
 
 BowlingGame.prototype.spareBonus = function () {
-  if ( (this._actualTurn() != 0) && (this._isSpare()) ) {
+  if ( (this._actualTurn() != 0) && (this._wasSpare()) ) {
     this._previousFrame().scores[1] += this._actualFrame().scores[0];
   }
 };
@@ -58,6 +58,6 @@ BowlingGame.prototype._previousFrame = function () {
   return this.frames[this._actualTurn() - 1]
 };
 
-BowlingGame.prototype._isSpare = function () {
+BowlingGame.prototype._wasSpare = function () {
   return this._previousFrame().scores.reduce((a, b) => a + b) === 10 && this._previousFrame().scores[0] != 10
 };
