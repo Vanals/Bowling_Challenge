@@ -49,10 +49,17 @@ describe('BowlingGame', function() {
     });
   });
 
-  describe('isStrike', function() {
+  describe('increaseTurn', function() {
+    it('Increase turn by 1 if in the first roll you did Strike', function () {
+      bowlinggame.runTurn(10)
+      expect(bowlinggame._actualTurn()).toEqual(1)
+    });
+  });
+
+  describe('wasStrike', function() {
     it('Return true if in the previous frame you did Strike!', function () {
       bowlinggame.runTurn(10) // After this i should go automatically to the next frame, so next turn
-      expect(bowlinggame._isStrike()).toEqual(true)
+      expect(bowlinggame._wasStrike()).toEqual(true)
     });
   });
 });

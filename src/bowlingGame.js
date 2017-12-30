@@ -24,6 +24,7 @@ BowlingGame.prototype.spareBonus = function () {
 };
 
 BowlingGame.prototype.increaseTurn = function () {
+  if (this._actualFrame().scores.reduce((a, b) => a + b) === 10 && this._actualFrame().scores.length === 1) this.turn += 1
   if (this.frames[this._actualTurn()].scores.length === 2) this.turn += 1
 };
 
@@ -33,7 +34,9 @@ BowlingGame.prototype.getFinalScore = function () {
   return this.totalscore.reduce((a, b) => a + b)
 };
 
-
+BowlingGame.prototype._wasStrike = function () {
+  return (this._previousFrame().scores.reduce((a, b) => a + b) === 10 && this._previousFrame().scores.length === 1)
+};
 
 BowlingGame.prototype._isGutter = function () {
   return this.totalscore.reduce((a, b) => a + b) === 0
