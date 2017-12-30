@@ -70,4 +70,20 @@ describe('BowlingGame', function() {
       expect(bowlinggame.frames[0].scores.reduce((a, b) => a + b)).toEqual(18)
     });
   });
+
+  describe('Typical game', function() {
+    it('Create a complete bowling game session with spares and strikes, and get the final score', function() {
+      bowlinggame.runTurn(10)
+      bowlinggame.runTurn(5)
+      bowlinggame.runTurn(2)
+      bowlinggame.runTurn(5)
+      bowlinggame.runTurn(5)
+      bowlinggame.runTurn(10)
+      bowlinggame.runTurn(2)
+      bowlinggame.runTurn(1)
+      bowlinggame.runTurn(10)
+      bowlinggame.runTurn(10) //double strike to fix
+      expect(bowlinggame.getFinalScore()).toEqual(90)
+    });
+  });
 });
