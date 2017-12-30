@@ -9,6 +9,7 @@ function BowlingGame(bowlingball = BowlingBall, bowlingframe = BowlingFrame) {
 BowlingGame.prototype.runTurn = function (score) {
   this.rollAndSave(score)
   this.spareBonus()
+  this.strikeBonus()
   this.increaseTurn()
 }
 
@@ -20,6 +21,10 @@ BowlingGame.prototype.spareBonus = function () {
   if ( (this._actualTurn() != 0) && (this._isSpare()) ) {
     this._previousFrame().scores[1] += this._actualFrame().scores[0];
   }
+};
+
+BowlingGame.prototype.strikeBonus = function () {
+  if ( this._actualTurn() != 0 && this._actualFrame().scores.length === 2 && this._wasStrike()) this._previousFrame().scores[0] += this._actualFrame().scores.reduce((a, b) => a + b)
 };
 
 BowlingGame.prototype.increaseTurn = function () {
