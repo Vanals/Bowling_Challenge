@@ -49,4 +49,10 @@ describe('BowlingGame', function() {
     });
   });
 
+  describe('isStrike', function() {
+    it('Return true if in the previous frame you did Strike!', function () {
+      bowlinggame.runTurn(10) // After this i should go automatically to the next frame, so next turn
+      expect(bowlinggame._isStrike()).toEqual(true)
+    });
+  });
 });
