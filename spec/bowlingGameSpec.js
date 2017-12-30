@@ -17,6 +17,13 @@ describe('BowlingGame', function() {
       expect(bowlinggame._actualTurn()).toEqual(1)
     });
 
+    it('Do not increase turn if final frame', function () {
+      bowlinggame.turn = 9
+      bowlinggame.rollAndSave(10)
+      bowlinggame.increaseTurn()
+      expect(bowlinggame._actualTurn()).toEqual(9)
+    });
+
   });
 
   describe('getFinalScore', function() {

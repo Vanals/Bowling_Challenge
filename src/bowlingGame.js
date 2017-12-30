@@ -34,7 +34,8 @@ BowlingGame.prototype.strikeBonus2 = function () {
   }
 };
 BowlingGame.prototype.increaseTurn = function () {
-  if (this._actualFrame().scores.reduce((a, b) => a + b) === 10 && this._actualFrame().scores.length === 1) this.turn += 1
+  if (this._actualTurn() === 9) return "Final frame!"
+  if (this._actualFrame().scores.reduce((a, b) => a + b) === 10 && this._actualFrame().scores.length === 1) return this.turn += 1
   if (this.frames[this._actualTurn()].scores.length === 2) this.turn += 1
 };
 
